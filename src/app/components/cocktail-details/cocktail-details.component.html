@@ -1,0 +1,18 @@
+<button class="back-btn" (click)="goBackToListPage()">Back</button>
+<div class="cocktail-list-container">
+    <div class="cocktail-list-item">
+        <div class="cocktail-product-image">
+            <img [src]="cocktailDetails.imageUrl">
+        </div>
+        <div class="cocktail-product-name">{{cocktailDetails.name}}
+            <span class="icon-star" [ngClass]="{'active': cocktailDetails.isSelectedFavorite }"
+                (click)="onClickFavourite(cocktailDetails)"></span>
+        </div>
+        <div class="cocktail-alcholic-state"
+            [ngStyle]="{fontWeight: 'bold', color: cocktailDetails.isAlcoholic ? 'Blue' : 'Green'}"><span
+                [ngStyle]="{fontWeight: 'bold', color: 'Black'}">Type : </span>{{cocktailDetails.isAlcoholic ?
+            'Alcoholic' : 'Non alcoholic'}}</div>
+        <div><span [ngStyle]="{fontWeight: 'bold'}">Ingredients :</span> {{cocktailDetails.ingredients}}</div>
+        <div> <span [ngStyle]="{fontWeight: 'bold'}">Instructions :</span> {{cocktailDetails.instructions}}</div>
+    </div>
+</div>

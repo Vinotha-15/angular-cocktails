@@ -1,0 +1,21 @@
+<cocktail-filter (searchTextChanged)="setSearchText($event)"></cocktail-filter>
+<div class="cocktail-list-container">
+    <ng-container *ngFor="let list of cocktailList">
+        <div class="cocktail-list-item" *ngIf="searchText === '' || list.name.toLowerCase().includes(searchText)">
+            <div class="cocktail-container">
+                <div class="cocktail-product-image">
+                    <img [src]="list.imageUrl" class="cocktail-product-image">
+                </div>
+                <div class="cocktail-product-name">
+                    <a (click)="cocktailDetails(list.id)">{{list.name}}</a>
+                    <span class="icon-star" data-id="${list.id}" (click)="onClickFavourite(list)"
+                        [ngClass]="{'active': list.isSelectedFavorite}"></span>
+                </div>
+                <div class="cocktail-alcholic-state"
+                    [ngStyle]="{fontWeight: 'bold', color: list.isAlcoholic ? 'Blue' : 'Green'}">{{list.isAlcoholic ?
+                    'Alcoholic' : 'Non alcoholic'}}</div>
+                <div>{{list.ingredients}}</div>
+            </div>
+        </div>
+    </ng-container>
+</div>
