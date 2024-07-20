@@ -9,7 +9,6 @@ import { map, Observable } from 'rxjs';
 })
 export class CocktailsService {
 
-  selectedCocktailId: string = '';
   cocktailCopyList: Cocktails[] = [];
 
   constructor(private http: HttpClient) { }

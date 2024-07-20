@@ -12,7 +12,7 @@ import { Cocktails } from '../../model/cocktails';
   styleUrl: './cocktail-details.component.scss'
 })
 export class CocktailDetailsComponent implements OnInit {
-  cocktailList: Cocktails[] = [];
+
   cocktailDetails: Cocktails = {
     id: '',
     name: '',
@@ -22,7 +22,6 @@ export class CocktailDetailsComponent implements OnInit {
     ingredients: [],
     isSelectedFavorite: false
   };
-
   cocktailId: string = '';
 
   constructor(private cocktailsService: CocktailsService, private route: ActivatedRoute, private router: Router) { }
@@ -59,7 +58,7 @@ export class CocktailDetailsComponent implements OnInit {
   }
 
   onClickFavourite(selectedItem: Cocktails): void {
-    if (selectedItem.isSelectedFavorite) {
+    if (selectedItem && selectedItem.isSelectedFavorite) {
       selectedItem.isSelectedFavorite = false;
     } else {
       selectedItem.isSelectedFavorite = true;

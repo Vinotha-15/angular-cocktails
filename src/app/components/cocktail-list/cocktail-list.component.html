@@ -1,7 +1,8 @@
 <cocktail-filter (searchTextChanged)="setSearchText($event)"></cocktail-filter>
 <div class="cocktail-list-container">
     <ng-container *ngFor="let list of cocktailList">
-        <div class="cocktail-list-item" *ngIf="searchText === '' || list.name.toLowerCase().includes(searchText)">
+        <div class="cocktail-list-item"
+            *ngIf="searchText === '' || list.name.toLowerCase().includes(searchText.toLowerCase())">
             <div class="cocktail-container">
                 <div class="cocktail-product-image">
                     <img [src]="list.imageUrl" class="cocktail-product-image">

@@ -17,8 +17,6 @@ export class CocktailListComponent implements OnInit {
 
   cocktailList: Cocktails[] = [];
   searchText: string = '';
-  favouriteCocktail: boolean = false;
-  favouriteCocktailList: Cocktails[] = [];
 
   constructor(private cocktailsService: CocktailsService, private router: Router) { }
 
@@ -40,13 +38,15 @@ export class CocktailListComponent implements OnInit {
       }
       if (localStorage['favourite-cocktail']) {
         let favoriteCocktailList: Cocktails[] = JSON.parse(localStorage.getItem('favourite-cocktail') || '{}');
-        this.cocktailList.forEach(resList => {
-          favoriteCocktailList.forEach((localList) => {
-            if (resList.id === localList.id) {
-              resList.isSelectedFavorite = localList.isSelectedFavorite;
-            }
-          })
-        });
+        if (favoriteCocktailList && favoriteCocktailList.length > 0) {
+          this.cocktailList.forEach(resList => {
+            favoriteCocktailList.forEach((localList) => {
+              if (resList.id === localList.id) {
+                resList.isSelectedFavorite = localList.isSelectedFavorite;
+              }
+            })
+          });
+        }
       }
     })
 
@@ -67,7 +67,6 @@ export class CocktailListComponent implements OnInit {
   }
 
   cocktailDetails(id: string): void {
-    this.cocktailsService.selectedCocktailId = id;
     this.router.navigate(['/cocktails', id]);
   }
 
